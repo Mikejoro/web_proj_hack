@@ -6,6 +6,12 @@
 //
 // Restyle and baseline non-control form elements.
 
+@brand-primary: #ab85bb;
+@brand-success: #95bb85;
+@brand-warning: #ff9800;
+@brand-danger: #de4b33;
+@brand-info: #cdb6d6;
+
 fieldset {
   padding: 0;
   margin: 0;
@@ -124,7 +130,7 @@ output {
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus();
+  .form-control-focus(@brand-primary);
 
   // Placeholder
   .placeholder();

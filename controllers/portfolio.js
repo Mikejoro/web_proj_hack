@@ -19,3 +19,14 @@ exports.getFSG = function(req, res) {
     title: 'Falling Sand Game'
   });
 };
+
+/**
+ * GET /portfolio/resume
+ * resume page.
+ */
+
+exports.getResume = function(req, res) {
+  res.render('portfolio/resume', {
+    title: 'Resume'
+  });
+};

@@ -129,6 +129,7 @@ app.post('/contact', contactController.postContact);
 
 app.get('/portfolio', portfolioController.getPortfolio);
 app.get('/portfolio/fsg', portfolioController.getFSG);
+app.get('/portfolio/resume', portfolioController.getResume);
 
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);

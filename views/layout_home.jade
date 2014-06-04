@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='csrf-token', content=_csrf)
+    meta(name='author', content='')
+    title #{title} | Hackathon Starter
+    != css('styles')
+  body
+    include partials/navigation
+    div(id='main-carousel' class='carousel slide')
+      div(class='carousel-inner')
+        div(class='item active')
+          img(src='/img/carousel_1.png' href='/portfolio/fsg')
+          div(class='carousel-caption')
+            p Javascript Falling Sand Game project
+        div(class='item')
+          img(src='http://placehold.it/1200x480')
+          div(class='carousel-caption')
+            p Resume
+      a(class='carousel-control left' href='#main-carousel' data-slide='prev')
+        &lsaquo;
+      a(class='carousel-control right' href='#main-carousel' data-slide='next')
+        &rsaquo;
+    .container
+      include partials/flash
+      block content
+
+    include partials/footer
+
+    != js('application')

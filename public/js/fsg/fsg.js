@@ -859,8 +859,8 @@ var captureMouseCoords = function(e)
 	// is left mouse button down?
 	if(e.which == 1)
 	{
-		mouseXY[0] = event.clientX - 200;
-		mouseXY[1] = event.clientY - $('canvas').offset().top;
+		mouseXY[0] = event.pageX - 200;
+		mouseXY[1] = event.pageY - $('canvas').offset().top;
 	}
 	else
 	{
@@ -880,14 +880,6 @@ addEventListener("mousedown", function (e)
 			currentTool++;
 		else
 			currentTool = 0;
-		/* if(currentTool === "Sand")
-			currentTool = "Water";
-		else if(currentTool === "Water")
-			currentTool = "Wall"
-		else if(currentTool === "Wall")
-			currentTool = "Acid";
-		else if(currentTool === "Acid")
-			currentTool = "Sand"; */
 	}
 	else
 	{
