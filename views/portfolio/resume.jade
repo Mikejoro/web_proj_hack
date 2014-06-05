@@ -1,6 +1,4 @@
 extends ../layout
-head
-	link(rel="stylesheet", type="text/css", href="/stylesheets/resume.css")
 block content
 	h1 Resume
 	p(style='white-space:pre;')
@@ -12,27 +10,55 @@ block content
 			div(class='resume-info')
 				| Case Western Reserve University, Cleveland, OH <br/>
 				| Bachelor of Science in Computer Science, 2013 <br/>
-			| Skills
-			div(class='resume-info')
-				| Languages
-				div(class='resume-languages')
-					| Java, C#, Javascript, HTML, CSS, C (limited)
-				| Professional Experience
-				table(class='table table-striped resume-experience')
-					tr(class='table-header')
-						th Company
-						th From - To
-						th Roles
-					tr
-						td Sogeti
-						td June 2013 - Present
-						td Consultant
-					tr
-						td Case Western Reserve University
-						td March 2012 - May 2013
-						td Programmer/Analyst
-					tr
-						td Sideways Inc.
-						td March 2011 - June 2011
-						td Developer
-	div
+			| Languages
+			div(class='resume-languages')
+				| Java, C#, Javascript, HTML, CSS, C (limited)
+			| Professional Experience
+			table(class='table table-striped resume-experience')
+				tr(class='table-header')
+					th Company
+					th From - To
+					th Roles
+				tr
+					td Sogeti
+					td June 2013 - Present
+					td Consultant
+				tr
+					td Case Western Reserve University
+					td March 2012 - May 2013
+					td Programmer/Analyst
+				tr
+					td Sideways Inc.
+					td March 2011 - June 2011
+					td Developer
+			div(class='resume-prof-header')
+				|Sogeti USA, Cincinnati, OH
+				div(class='resume-info')
+					|Consultant
+					ul
+						li Work on large scale migration which required many SQL transformations and generation of scripts pulled from DB info using Java/JDBC
+						li Worked on projects maintaining and modifying older Java web applications 
+						li Between projects, honed java programming skills as well as familiarized himself with new frameworks such as Node.js and useful libraries. 
+				|Case Western Reserve University, Cleveland, OH
+				div(class='resume-info')
+					|Programmer/Analyst
+					ul
+						li Create and maintain functions, triggers, and tables in Oracle database
+						li Create applications (Oracle APEX)/webpages to access databases and display 
+						li Add functionality to new and existing applications/webpages with Javascript 
+						li Creating new HTML/CSS front end webpages
+						li Work with non-technical researchers to create the database and application functionality required
+				|Sideways, Inc., Cleveland, OH
+				div(class='resume-info')
+					|Developer
+					ul
+						li Worked on basic iOS mobile applications
+						li Learned basics of Objective C 
+				|Free Time Projects and Experience
+				div(class='resume-info')
+					ul
+						li Have tinkered with basic Android development
+						li Worked on various hackerrank.com challenges using Java
+						li Node.js boilerplate website
+						li Created a simple ‘Falling Sand Game’ in Javascript
+
