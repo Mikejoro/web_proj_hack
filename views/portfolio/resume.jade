@@ -1,8 +1,38 @@
 extends ../layout
-
+head
+	link(rel="stylesheet", type="text/css", href="/stylesheets/resume.css")
 block content
 	h1 Resume
 	p(style='white-space:pre;')
 		a(href='/pdf/mjr_resume_sogeti.pdf' target='_blank') View PDF <br/>
 		a(href='/pdf/mjr_resume_sogeti.pdf' download='Michael_Robertson_Resume') Download PDF
+
+		div(class='resume-title')
+			| Education
+			div(class='resume-info')
+				| Case Western Reserve University, Cleveland, OH <br/>
+				| Bachelor of Science in Computer Science, 2013 <br/>
+			| Skills
+			div(class='resume-info')
+				| Languages
+				div(class='resume-languages')
+					| Java, C#, Javascript, HTML, CSS, C (limited)
+				| Professional Experience
+				table(class='table table-striped resume-experience')
+					tr(class='table-header')
+						th Company
+						th From - To
+						th Roles
+					tr
+						td Sogeti
+						td June 2013 - Present
+						td Consultant
+					tr
+						td Case Western Reserve University
+						td March 2012 - May 2013
+						td Programmer/Analyst
+					tr
+						td Sideways Inc.
+						td March 2011 - June 2011
+						td Developer
 	div
