@@ -11,7 +11,8 @@ var context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
 canvas.class = 'fsgContainer';
-document.body.appendChild(canvas);
+$('#main-container').append(canvas);
+//document.body.appendChild(canvas);
 
 
 
@@ -659,25 +660,25 @@ Fire.prototype.move = function()
 			}
 			else if(temp.fireProof)
 			{
-				var left, right = false;
-				if (this.x - 1 > 0 && !this.checkParticle(this.x - 1, this.y))
-				{
-					left = true;
-				}
-				if (this.x + 1 < canvas.width && !this.checkParticle(this.x + 1, this.y))
-				{
-					right = true;
-				}
-				var tempX = this.nextAvailable(left, right, this.yVel);
-				if(tempX != this.x)
-				{
-					delete pixArray[this.x][this.y];
-					this.x = tempX;
-					this.y += this.yVel;
-					if (!(this.x < 0 || this.x > canvas.width + 1 || this.y < 0 || this.y > canvas.height + 1))
-						pixArray[this.x][this.y] = this;
-					return true;
-				}
+				// var left, right = false;
+				// if (this.x - 1 > 0 && !this.checkParticle(this.x - 1, this.y))
+				// {
+				// 	left = true;
+				// }
+				// if (this.x + 1 < canvas.width && !this.checkParticle(this.x + 1, this.y))
+				// {
+				// 	right = true;
+				// }
+				// var tempX = this.nextAvailable(left, right, this.yVel);
+				// if(tempX != this.x)
+				// {
+				// 	delete pixArray[this.x][this.y];
+				// 	this.x = tempX;
+				// 	this.y += this.yVel;
+				// 	if (!(this.x < 0 || this.x > canvas.width + 1 || this.y < 0 || this.y > canvas.height + 1))
+				// 		pixArray[this.x][this.y] = this;
+				// 	return true;
+				// }
 			}
 		}
 		
@@ -859,7 +860,8 @@ var captureMouseCoords = function(e)
 	// is left mouse button down?
 	if(e.which == 1)
 	{
-		mouseXY[0] = event.pageX - 200;
+		var tempMainCont = $('#main-container');
+		mouseXY[0] = event.pageX - parseInt(tempMainCont.css('padding-left') , 10)- parseInt(tempMainCont.css('margin-left') , 10);
 		mouseXY[1] = event.pageY - $('canvas').offset().top;
 	}
 	else
@@ -873,31 +875,35 @@ addEventListener("mousemove", function (e){captureMouseCoords(e);}, false);
 
 addEventListener("mousedown", function (e)
 {
-	if(event.clientX > canvas.width || event.clientY > canvas.height
-		|| event.clientX < 0 || event.clientY < 0)
-	{
-		if (currentTool < 5)
-			currentTool++;
-		else
-			currentTool = 0;
-	}
-	else
-	{
+	// if(event.clientX > canvas.width || event.clientY > canvas.height
+	// 	|| event.clientX < 0 || event.clientY < 0)
+	// {
+	// 	if (currentTool < 5)
+	// 		currentTool++;
+	// 	else
+	// 		currentTool = 0;
+	// }
+	// else
+	// {
 		captureMouseCoords(e);
-	}
+	// }
 }, false);
+
+// console.log(incSize);
+// decSize.addEventListener("click", decBrushSize());
+// incSize.addEventListener("click", incBrushSize());
 
 var keysDown = {};
 
-addEventListener("keydown", function (e) 
-{
-	keysDown[e.keyCode] = true;
-}, false);
+// addEventListener("keydown", function (e) 
+// {
+// 	keysDown[e.keyCode] = true;
+// }, false);
 
-addEventListener("keyup", function (e) 
-{
-	delete keysDown[e.keyCode];
-}, false);
+// addEventListener("keyup", function (e) 
+// {
+// 	delete keysDown[e.keyCode];
+// }, false);
 
 
 
@@ -964,10 +970,9 @@ var update = function ()
 	//is it undefined? if not, it means it is down
 	if(mouseXY[0] && mouseXY[0] - brushSize > 0 && mouseXY[0] <= canvas.width && mouseXY[1] - brushSize  > 0 && mouseXY[1] <= canvas.height)
 	{
-		createParticles(currentTool, mouseXY[0], mouseXY[1]);
+		createParticles(parseInt($('#fsg-type-select').val(), 10), mouseXY[0], mouseXY[1]);
 	}
 	
-	changeBrushSize();
 	for (var i = 0; i < particleList.length; i++)
 	{
 		var temp = particleList[i];
@@ -994,16 +999,28 @@ var update = function ()
 
 
 //------------------------------------brush size function
-var changeBrushSize = function()
+// var changeBrushSize = function()
+// {
+// 	if (38 in keysDown)
+// 	{
+// 		brushSize++;
+// 	}
+// 	if (brushSize != 0 && 40 in keysDown)
+// 	{
+// 		brushSize--;
+// 	}
+// }
+
+var incBrushSize = function()
 {
-	if (38 in keysDown)
-	{
-		brushSize++;
-	}
-	if (brushSize != 0 && 40 in keysDown)
-	{
-		brushSize--;
-	}
+	brushSize++;
+	$('#fsg-brush-size').text(brushSize);
+}
+
+var decBrushSize = function()
+{
+	brushSize--;
+	$('#fsg-brush-size').text(brushSize);
 }
 
 	
@@ -1028,6 +1045,9 @@ var render = function ()
 	// for(var i = 0; i < testing.length; i++)
 		// context.fillText(testing[i] + " :: " + particleList[i].checkParticle(particleList[i].x, particleList[i].y), 0, i * 10);
 	context.fillText("T: " + TypeEnum.KeyLookup[currentTool] + " | S: " + brushSize + " | #: " + particleList.length, 0, 0);
+	
+	
+
 };
 	
 //------------------------------------------------------------------------------------------------------------

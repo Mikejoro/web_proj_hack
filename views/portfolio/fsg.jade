@@ -2,4 +2,29 @@ extends ../layout
 
 block content
 	h1 Falling Sand Game
+	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
 	script(src='/js/fsg/fsg.js')
+		
+	//select
+		//each type, i in types
+			//option(value=i) Type #{type}
+	div(class='btn-toolbar')
+		div(class='btn-group')
+			select(class='form-control' id='fsg-type-select')
+				option(value='0') Wall
+				option(value='1') Sand
+				option(value='2') Water
+				option(value='3') Acid
+				otpion(value='4') Wax
+				option(value='5') Fire
+				//for type in types
+					//li
+						//a(href='#') type
+		div(class='btn-group')				
+			button(class='btn btn-default' id='fsg-dec-brush') -
+			button(class='btn btn-default' id='fsg-brush-size') 
+			button(class='btn btn-default' id='fsg-inc-brush') +
+		script.
+			$('#fsg-inc-brush')[0].addEventListener("click", incBrushSize);
+			$('#fsg-dec-brush')[0].addEventListener("click", decBrushSize);
+			$('#fsg-brush-size').text(brushSize);
